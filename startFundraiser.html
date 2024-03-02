@@ -1,0 +1,472 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://getbootstrap.com/docs/5.3/assets/css/docs.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <title>WeFund</title>
+    <style>
+        body {
+            background-image: url("{% static 'images/background.jpeg' %}");
+            background-size: cover;
+            background-repeat: no-repeat;
+        }
+
+        .navbar {
+            width: 100%;
+            overflow: auto;
+        }
+
+        .navbar a:hover {
+            color: rgba(255, 186, 0, 1);
+        }
+
+        .nav-link:hover {
+            color: rgba(255, 186, 0, 1) !important;
+        }
+
+        .button {
+            color: black;
+        }
+
+        .container{
+            color: white
+        }
+
+        .bd-placeholder-img {
+            font-size: 1.125rem;
+            text-anchor: middle;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            user-select: none;
+        }
+
+        @media (min-width: 768px) {
+            .bd-placeholder-img-lg {
+                font-size: 3.5rem;
+            }
+        }
+
+        .b-example-divider {
+            height: 3rem;
+            background-color: rgba(0, 0, 0, .1);
+            border: solid rgba(0, 0, 0, .15);
+            border-width: 1px 0;
+            box-shadow: inset 0 .5em 1.5em rgba(0, 0, 0, .1), inset 0 .125em .5em rgba(0, 0, 0, .15);
+        }
+
+        .b-example-vr {
+            flex-shrink: 0;
+            width: 1.5rem;
+            height: 100vh;
+        }
+
+        .bi {
+            vertical-align: -.125em;
+            fill: currentColor;
+        }
+
+        .nav-scroller {
+            position: relative;
+            z-index: 2;
+            height: 2.75rem;
+            overflow-y: hidden;
+        }
+
+        .nav-scroller .nav {
+            display: flex;
+            flex-wrap: nowrap;
+            padding-bottom: 1rem;
+            margin-top: -1px;
+            overflow-x: auto;
+            text-align: center;
+            white-space: nowrap;
+            -webkit-overflow-scrolling: touch;
+        }
+
+        .footer_area .row {
+            margin-left: -25px;
+            margin-right: -25px;
+        }
+
+        .footer_area .row .col,
+        .footer_area .row .col-1,
+        .footer_area .row .col-10,
+        .footer_area .row .col-11,
+        .footer_area .row .col-12,
+        .footer_area .row .col-2,
+        .footer_area .row .col-3,
+        .footer_area .row .col-4,
+        .footer_area .row .col-5,
+        .footer_area .row .col-6,
+        .footer_area .row .col-7,
+        .footer_area .row .col-8,
+        .footer_area .row .col-9,
+        .footer_area .row .col-auto,
+        .footer_area .row .col-lg,
+        .footer_area .row .col-lg-1,
+        .footer_area .row .col-lg-10,
+        .footer_area .row .col-lg-11,
+        .footer_area .row .col-lg-12,
+        .footer_area .row .col-lg-2,
+        .footer_area .row .col-lg-3,
+        .footer_area .row .col-lg-4,
+        .footer_area .row .col-lg-5,
+        .footer_area .row .col-lg-6,
+        .footer_area .row .col-lg-7,
+        .footer_area .row .col-lg-8,
+        .footer_area .row .col-lg-9,
+        .footer_area .row .col-lg-auto,
+        .footer_area .row .col-md,
+        .footer_area .row .col-md-1,
+        .footer_area .row .col-md-10,
+        .footer_area .row .col-md-11,
+        .footer_area .row .col-md-12,
+        .footer_area .row .col-md-2,
+        .footer_area .row .col-md-3,
+        .footer_area .row .col-md-4,
+        .footer_area .row .col-md-5,
+        .footer_area .row .col-md-6,
+        .footer_area .row .col-md-7,
+        .footer_area .row .col-md-8,
+        .footer_area .row .col-md-9,
+        .footer_area .row .col-md-auto,
+        .footer_area .row .col-sm,
+        .footer_area .row .col-sm-1,
+        .footer_area .row .col-sm-10,
+        .footer_area .row .col-sm-11,
+        .footer_area .row .col-sm-12,
+        .footer_area .row .col-sm-2,
+        .footer_area .row .col-sm-3,
+        .footer_area .row .col-sm-4,
+        .footer_area .row .col-sm-5,
+        .footer_area .row .col-sm-6,
+        .footer_area .row .col-sm-7,
+        .footer_area .row .col-sm-8,
+        .footer_area .row .col-sm-9,
+        .footer_area .row .col-sm-auto,
+        .footer_area .row .col-xl,
+        .footer_area .row .col-xl-1,
+        .footer_area .row .col-xl-10,
+        .footer_area .row .col-xl-11,
+        .footer_area .row .col-xl-12,
+        .footer_area .row .col-xl-2,
+        .footer_area .row .col-xl-3,
+        .footer_area .row .col-xl-4,
+        .footer_area .row .col-xl-5,
+        .footer_area .row .col-xl-6,
+        .footer_area .row .col-xl-7,
+        .footer_area .row .col-xl-8,
+        .footer_area .row .col-xl-9,
+        .footer_area .row .col-xl-auto {
+            padding-right: 25px;
+            padding-left: 25px;
+        }
+
+        .single-footer-widget {
+            position: relative;
+            z-index: 1;
+        }
+
+        .single-footer-widget .copywrite-text a {
+            color: #1d33fd;
+            font-size: 1rem;
+        }
+
+        .single-footer-widget .copywrite-text a:hover,
+        .single-footer-widget .copywrite-text a:focus {
+            color: #3f43fd;
+        }
+
+        .single-footer-widget .widget-title {
+            margin-bottom: 1.5rem;
+        }
+
+        .single-footer-widget .footer_menu li a {
+            color: #747794;
+            margin-bottom: 1rem;
+            display: block;
+            font-size: 1rem;
+        }
+
+        .single-footer-widget .footer_menu li a:hover,
+        .single-footer-widget .footer_menu li a:focus {
+            color: rgba(255, 186, 0, 1);
+        }
+
+        .single-footer-widget .footer_menu li:last-child a {
+            margin-bottom: 0;
+        }
+
+        .footer_social_area {
+            position: relative;
+            z-index: 1;
+        }
+
+        .footer_social_area a {
+            border-radius: 50%;
+            height: 40px;
+            text-align: center;
+            width: 40px;
+            display: inline-block;
+            background-color: #f5f5ff;
+            line-height: 40px;
+            -webkit-box-shadow: none;
+            box-shadow: none;
+            margin-right: 10px;
+        }
+
+        .footer_social_area a i {
+            line-height: 36px;
+        }
+
+        .footer_social_area a:hover,
+        .footer_social_area a:focus {
+            color: rgba(255, 186, 0, 1);
+        }
+
+        .widget-title {
+            color: lightsteelblue
+        }
+
+        .footer_menu a:link {
+            text-decoration: none;
+        }
+
+        .footer_menu a:hover {
+            text-decoration: underline;
+        }
+    </style>
+    <!-- Custom styles for this template -->
+    <link href="form-validation.css" rel="stylesheet">
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg bg-body-tertiary">
+        <div class="container-fluid">
+            <div class="navbar-brand">
+                <img src="{% static 'images/logo.jpg' %}" alt="logo" height="50px" width="50px">
+            </div>
+            <ul class="navbar-nav">
+                <li class="nav-item px-2"><a class="nav-link" href="home.html"
+                        style="text-decoration:solid; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; font-size: 17px;"><i
+                            class="fa fa-home"></i> HOME</a></li>
+                <li class="nav-item px-2"><a class="nav-link active" href="startup.html"
+                        style="text-decoration:solid; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; font-size: 17px;"><i
+                            class="fa fa-building"></i> STARTUP</a></li>
+                <li class="nav-item px-2"><a class="nav-link" href="investor.html"
+                        style="text-decoration:solid; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; font-size: 17px;"><i
+                            class="fa fa-money"></i> INVESTOR</a></li>
+            </ul>
+            <div class="col-md-3 text-end"><a href="login.html"
+                    style="text-decoration:solid; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; font-size: 17px;"
+                    class="button">LOGOUT</a></li>
+            </div>
+    </nav>
+    <div class="container">
+        <div class="container">
+            <header
+                class="d-flex flex-wrap align-items-center justify-content-center justify-content-md-between py-3 mb-4 border-bottom">
+                <ul class="nav col-md-12 justify-content-center mb-md-0">
+                    <li class="nav-item"><a href="#" class="nav-link" style="color: aliceblue;">View Status</a></li>
+                    <li class="nav-item"><a href="startFundraiser.html" class="nav-link active"
+                            style="color: aliceblue;">Start a project</a></li>
+                    <li class="nav-item"><a href="#" class="nav-link" style="color: aliceblue;">Fundraisers</a></li>
+                </ul>
+            </header>
+        </div>
+    </div>
+    <div class="container">
+        <main>
+            <div class="py-2 text-center" style="color: aliceblue;">
+                <h2>Start a fundraiser</h2>
+                <p class="lead">Enter the details of your fundraising campaign and after due validation,your fundraising
+                    campaign will go live immediately</p>
+            </div>
+            <div class="row g-5">
+                <div class="col-md-7 col-lg-8">
+                    <form class="needs-validation" novalidate>
+                        <div class="row g-3">
+                            <div class="col-sm-6">
+                                <label for="firstName" class="form-label" style="color: lightsteelblue;">Campaign
+                                    title</label>
+                                <input type="text" class="form-control" id="firstName" placeholder="" value="" required>
+                                <div class="invalid-feedback" style="color: lightsteelblue;">Valid Campaign title is
+                                    required.</div>
+                            </div>
+                            <div class="col-12">
+                                <label for="desc" class="form-label" style="color: lightsteelblue;">Add
+                                    description</label>
+                                <div class="input-group has-validation">
+                                    <textarea class="form-control" rows=8 cols=50></textarea>
+                                </div>
+                            </div>
+                            <div class="col-12">
+                                <label for="capital" class="form-label" style="color: lightsteelblue;">Capital to be
+                                    raised <span class="text-muted">(in Rupees)</span></label>
+                                <input type="number" class="form-control" id="capital">
+                                <div class="invalid-feedback" style="color: lightsteelblue;">Please enter a valid
+                                    amount.</div>
+                            </div>
+                            <div class="col-12">
+                                <label for="mininv" class="form-label" style="color: lightsteelblue;">Minimum investment
+                                    per investor</label>
+                                <input type="number" class="form-control" id="mininv" required>
+                                <div class="invalid-feedback" style="color: lightsteelblue;">Please enter a valid
+                                    amount.</div>
+                            </div>
+                            <div class="col-md-5">
+                                <label for="returnType" class="form-label" style="color: lightsteelblue;">Returns
+                                    option</label>
+                                <select class="form-select" id="returnType" required>
+                                    <option value="" style="color: lightsteelblue;">Choose...</option>
+                                    <option value="shares" style="color: lightsteelblue;">Shares</option>
+                                    <option value="interest" style="color: lightsteelblue;">Interest</option>
+                                </select>
+                                <div class="invalid-feedback" style="color: lightsteelblue;">Please select a valid
+                                    return type.</div>
+                            </div>
+                            <br>
+                            <div class="col-md-3">
+                                <label for="contact" class="form-label" style="color: lightsteelblue;">Contact
+                                    mail</label>
+                                <input type="email" style="width:350px;" class="form-control" id="contact"
+                                    placeholder="" required>
+                                <div class="invalid-feedback" style="color: lightsteelblue;">Contact mail required</div>
+                            </div>
+                        </div>
+                        <hr class="my-4">
+                        <div class="form-check">
+                            <input type="checkbox" class="form-check-input" id="notify">
+                            <label class="form-check-label" for="same-address" style="color: lightsteelblue;">Send
+                                notification every time an investor
+                                invests in this campaign</label>
+                        </div>
+                        <div class="form-check">
+                            <input type="checkbox" class="form-check-input" id="save-info">
+                            <label class="form-check-label" for="save-info" style="color: lightsteelblue;">Save this
+                                information for next time</label>
+                        </div>
+                        <hr class="my-4">
+                        <button class="w-100 btn btn-primary btn-lg" type="submit">Post this fundraising
+                            campaign</button>
+                    </form>
+                </div>
+            </div>
+        </main>
+        <br>
+        <br>
+        <footer class="footer_area section_padding_130_0">
+            <div class="container">
+                <div class="row">
+                    <!-- Single Widget-->
+                    <div class="col-12 col-sm-6 col-lg-4">
+                        <div class="single-footer-widget section_padding_0_130">
+                            <!-- Footer Logo-->
+                            <div class="footer-logo mb-3"></div>
+                            <p><i>WeFund is a completely free web application. Transform Your Passion to Money$$$</i>
+                            </p>
+                            <!-- Copywrite Text-->
+                            <div class="copywrite-text mb-2">
+                                <p class="mb-0">Made with love by <i>Rahul R</i> <i class="fa fa-heart"></i>
+                                </p>
+                            </div>
+                            <div class="footer_social_area">
+                                <a href="#" data-toggle="tooltip" data-placement="top" title=""
+                                    data-original-title="Facebook">
+                                    <i class="fa fa-facebook"></i>
+                                </a>
+                                <a href="#" data-toggle="tooltip" data-placement="top" title=""
+                                    data-original-title="Pinterest">
+                                    <i class="fa fa-pinterest"></i>
+                                </a>
+                                <a href="#" data-toggle="tooltip" data-placement="top" title=""
+                                    data-original-title="Twitter">
+                                    <i class="fa fa-twitter"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-12 col-sm-6 col-lg">
+                        <div class="single-footer-widget section_padding_0_130">
+                            <h5 class="widget-title">About</h5>
+                            <div class="footer_menu">
+                                <ul>
+                                    <li>
+                                        <a href="#">About Us</a>
+                                    </li>
+                                    <li>
+                                        <a href="#">Corporate Sale</a>
+                                    </li>
+                                    <li>
+                                        <a href="#">Terms &amp; Policy</a>
+                                    </li>
+                                    <li>
+                                        <a href="#">Community</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Single Widget-->
+                    <div class="col-12 col-sm-6 col-lg">
+                        <div class="single-footer-widget section_padding_0_130">
+                            <!-- Widget Title-->
+                            <h5 class="widget-title">Support</h5>
+                            <!-- Footer Menu-->
+                            <div class="footer_menu">
+                                <ul>
+                                    <li>
+                                        <a href="#">Privacy Policy</a>
+                                    </li>
+                                    <li>
+                                        <a href="#">Term &amp; Conditions</a>
+                                    </li>
+                                    <li>
+                                        <a href="#">Help &amp; Support</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Single Widget-->
+                    <div class="col-12 col-sm-6 col-lg">
+                        <div class="single-footer-widget section_padding_0_130">
+                            <!-- Widget Title-->
+                            <h5 class="widget-title">Contact</h5>
+                            <!-- Footer Menu-->
+                            <div class="footer_menu">
+                                <ul>
+                                    <li>
+                                        <a href="#">Call Centre</a>
+                                    </li>
+                                    <li>
+                                        <a href="#">Email Us</a>
+                                    </li>
+                                    <li>
+                                        <a href="#">Term &amp; Conditions</a>
+                                    </li>
+                                    <li>
+                                        <a href="#">Help Center</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <p style="color: lightslategrey; text-align: center;">&copy; WeFund</p>
+        </footer>
+    </div>
+    <script src="../assets/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="form-validation.js"></script>
+</body>
+
+</html>
